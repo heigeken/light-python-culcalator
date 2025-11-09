@@ -1,2 +1,9 @@
-# light-python-culcalator
-a project i did in couple hours just to put it on my git , did it for school
+# Simple Console Calculator
+
+A small Python console calculator that supports:
+- basic operations (+, -, *, /)
+- multiple steps with different operations
+- error handling (like division by zero)
+- quitting anytime with 'q'
+
+created for school as a beginner
