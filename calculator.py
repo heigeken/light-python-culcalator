@@ -34,7 +34,7 @@ def get_operation(prompt):
 
 
 def main():
-    print("hey thats just an calculator\n")  # теперь выводится при запуске
+    print("hey thats just an calculator\n")  
 
     while True:
         result = get_number("enter the first number: ")
@@ -50,9 +50,9 @@ def main():
                 print("error: division by zero is not allowed.")
                 continue
 
-            result = ops[op](result, num)
+            result = ops[op](result,num)
 
-            # print result nicely
+            
             if isinstance(result, float) and result.is_integer():
                 print("current result:", int(result))
             else:
@@ -66,6 +66,5 @@ def main():
             break
 
 
-# вот эта строка — главное отличие!
 if __name__ == "__main__":
     main()
