@@ -7,64 +7,49 @@ ops = {
     '/': operator.truediv
 }
 
-
 def get_number(prompt):
-    """ask the user for a number and return it as float. Supports 'q' to quit."""
     while True:
         s = input(prompt).strip()
         if s.lower() in ('q', 'quit', 'exit'):
-            print("exiting, bye!")
             exit()
         try:
             return float(s)
         except ValueError:
-            print("invalid input - a number is required, try again or 'q' to quit")
-
+            print("invalid input")
 
 def get_operation(prompt):
-    """ask for an operation and return '+', '-', '*', '/'."""
     while True:
         op = input(prompt).strip()
-        if op in ops or op.lower() == 'done':
+        if op in ops or op == 'done':
             return op
         if op.lower() in ('q', 'quit', 'exit'):
-            print("exiting, bye!")
             exit()
-        print("invalid operation. use +, -, *, /, or 'done' to finish (or 'q' to quit)")
-
+        print("invalid operation")
 
 def main():
-    print("hey thats just an calculator\n")  
+    print("calculator\n")
 
     while True:
-        result = get_number("enter the first number: ")
+        result = get_number("first number: ")
 
         while True:
-            op = get_operation("choose an operation (+, -, *, /) or 'done' to finish: ")
-            if op.lower() == 'done':
+            op = get_operation("operation (+, -, *, /) or 'done': ")
+            if op == 'done':
                 break
 
-            num = get_number("enter the next number: ")
+            num = get_number("next number: ")
 
             if op == '/' and num == 0:
-                print("error: division by zero is not allowed.")
+                print("division by zero")
                 continue
 
-            result = ops[op](result,num)
+            result = ops[op](result, num)
+            print("result:", int(result) if result.is_integer() else result)
 
-            
-            if isinstance(result, float) and result.is_integer():
-                print("current result:", int(result))
-            else:
-                print("current result:", result)
+        print("final:", result, "\n")
 
-        print("final result:", result, "\n")
-
-        again = input("another calculation? (Enter = yes, q = no): ").strip().lower()
-        if again in ('q', 'quit', 'exit'):
-            print("bye!")
+        if input("again? (q = no): ").strip().lower() in ('q', 'quit', 'exit'):
             break
-
 
 if __name__ == "__main__":
     main()
